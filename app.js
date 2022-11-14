@@ -6,14 +6,14 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1', 
+mongoose.connect('mongodb://localhost:27017/mongo-1', 
                     { 
                         useNewUrlParser: true,
                     });
 
 
 mongoose.connection.on('error', () => {
-  throw new Error(`unable to connect to database: ${config.mongoUri}`)
+  throw new Error(`unable to connect to database: ${process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1'}`)
 })
 
 mongoose.connection.once("open",  () => {
