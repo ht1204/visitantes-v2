@@ -15,5 +15,5 @@ De igual manera, al realizar la solicitud, el mensaje que debe aparecer es (si n
 
 - Para apagar servidor, presionar la combinación de teclas ```Ctrl + C``` o en ```Command + C``` en Mac
 
-Reto: Visitantes - [Make It Real Bootcamp](http://makeitreal.camp)
+Reto: Visitantes - [Make It Real Bootcamp](http://makeitreal.camp) \
 [Versión Anterior](https://github.com/ht1204/visitantes)
