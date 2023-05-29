@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mongo-1', 
-                    { 
+mongoose.connect('mongodb://localhost:27017/mongo-1',
+                    {
                         useNewUrlParser: true,
                     });
 
@@ -21,29 +21,29 @@ mongoose.connection.once("open",  () => {
 });
 
 
-const VisitorModel = mongoose.Schema({
+const Visitor = mongoose.Schema({
   name: {
     type: String,
     trim: true,
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 });
 
-const Visitor = mongoose.model('Visitor', VisitorModel);
+const VisitorEntity = mongoose.model('Visitor', Visitor);
 /***************************************************/
 
-app.post("/", async (req, res) => {
+app.get("/", async (req, res) => {
   const { query: { name } } = req;
   const paramName = name ? name : 'Anónimo';
 
   const visitorBody = {
     name: paramName,
   }
-  
-  const visitor = new Visitor(visitorBody);
+
+  const visitor = new VisitorEntity(visitorBody);
 
    try {
     await visitor.save();
