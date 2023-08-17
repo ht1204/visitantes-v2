@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mongo-1',
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mongo-1',
                     {
                         useNewUrlParser: true,
                     });
@@ -47,9 +47,9 @@ app.get("/", async (req, res) => {
 
    try {
     await visitor.save();
-    return res.status(200).send("<h1>El visitante fue almacenado con éxito</h1>");
+    res.status(200).send("<h1>El visitante fue almacenado con éxito</h1>");
   } catch (err) {
-    return res.status(400).json({
+    res.status(500).json({
       err
     })
   }
